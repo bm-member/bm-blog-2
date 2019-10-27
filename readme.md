@@ -4,6 +4,7 @@
 - php artisan make:model Post -m
 - php artisan make:model Post --migration
 - php artisan migrate
+- php artisan make:auth
 
 ```
 php artisan make:controller Backend/PostController -r

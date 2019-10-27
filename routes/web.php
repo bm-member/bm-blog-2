@@ -22,6 +22,10 @@
     }
 }); */
 
+Route::get('/', function() {
+    return view('welcome');
+});
+
 // Post routes
 Route::get('post', 'Backend\PostController@index');
 Route::get('/post/create', 'Backend\PostController@create');
@@ -29,3 +33,7 @@ Route::post('post', 'Backend\PostController@store');
 Route::get('post/{id}/edit', 'Backend\PostController@edit');
 Route::post('post/{id}/edit', 'Backend\PostController@update');
 Route::get('post/{id}/delete', 'Backend\PostController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
