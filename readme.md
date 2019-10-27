@@ -5,6 +5,10 @@
 - php artisan make:model Post --migration
 - php artisan migrate
 
+```
+php artisan make:controller Backend/PostController -r
+```
+
 ### Git 
 
 git init

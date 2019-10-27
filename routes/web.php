@@ -11,12 +11,21 @@
     ]);
 }); */
 
-Route::get('page/{name}/{address}', 'PageController@page');
+
+/* Route::get('/test', function() {
+    for($i=0; $i<5; $i++) {
+        $post = new App\Post();
+        $post->title = Str::random(10);
+        $post->content = Str::random(100);
+        $post->user_id = 1;
+        $post->save();
+    }
+}); */
 
 // Post routes
-Route::get('post/all', 'PostController@view');
-Route::get('post/show/{id}', 'PostController@show');
-Route::get('post/save', 'PostController@store');
-Route::get('post/update/{id}', 'PostController@update');
-Route::get('post/delete/{id}', 'PostController@destroy');
-
+Route::get('post', 'Backend\PostController@index');
+Route::get('/post/create', 'Backend\PostController@create');
+Route::post('post', 'Backend\PostController@store');
+Route::get('post/{id}/edit', 'Backend\PostController@edit');
+Route::post('post/{id}/edit', 'Backend\PostController@update');
+Route::get('post/{id}/delete', 'Backend\PostController@destroy');
