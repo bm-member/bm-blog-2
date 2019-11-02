@@ -22,10 +22,11 @@ git push -u origin master
 
 ### Installation 
 
-- git clone
-- copy .env.example to .env
+- git clone https://github.com/bm-member/bm-blog-2.git
+- copy .env.example .env
 - config db setting 
 - composer install
 - php artisan key:generate
+- php artisan migrate
 - php artisan serve
 - done.
