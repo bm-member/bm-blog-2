@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h3>Create Post</h3>
-            <form action="{{ url('post') }}" method="post">
+            <form action="{{ url('admin/post') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Title</label>

@@ -21,9 +21,13 @@
             <h3>All Posts</h3>
         </div>
         <div class="col-md-4 text-right">
-            <a href="post/create" class="btn btn-primary">Create</a>
+            <a href="post/create" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i>
+                Create
+            </a>
         </div>
     </div>
+
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-6">
@@ -35,13 +39,24 @@
                     {{ $post->content}}
                 </div>
                 <div class="card-footer text-right">
-                    <a href="{{ url("post/$post->id/edit") }}" class="btn btn-success btn-sm">Edit</a>
-                    <a href="{{ url("post/$post->id/delete") }}" class="btn btn-danger btn-sm">Del</a>
+                    <a href="{{ url("admin/post/$post->id/edit") }}" class="btn btn-success btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                    <a href="{{ url("admin/post/$post->id/delete") }}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                        Del
+                    </a>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
+
+    <div class="row justify-content-center">
+        {{ $posts->links() }}
+    </div>
+    
 </div>
 
 @endsection

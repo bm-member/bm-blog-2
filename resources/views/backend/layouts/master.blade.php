@@ -52,7 +52,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">
+                            {{ auth()->user()->name }}
+                        </a>
                     </div>
                 </div>
 
@@ -72,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('post') }}" class="nav-link ">
+                                    <a href="{{ url('admin/post') }}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Post</p>
                                     </a>
@@ -80,10 +82,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('admin/profile') }}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Profile
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-power-off text-danger"></i>
+                                <p>
+                                    Logout
                                 </p>
                             </a>
                         </li>

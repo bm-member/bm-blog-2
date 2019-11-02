@@ -7,6 +7,13 @@
 - php artisan make:auth
 - php artisan serve
 - php artisan serve --port=3000
+- php artisan make:middleware AuthWare
+- php artisan db:seed --class=PostSeeder
+- php artisan db:seed
+- php artisan migrate:reset 
+- php artisan migrate
+- php artisan migrate:fresh
+- php artisan migrate:fresh --seed
 
 ```
 php artisan make:controller Backend/PostController -r

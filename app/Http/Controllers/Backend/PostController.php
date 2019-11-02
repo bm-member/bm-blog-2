@@ -11,7 +11,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        // $posts = Post::orderBy('id', 'desc')->get();
+        $posts = Post::orderBy('id', 'desc')->paginate(6);
         return view('backend.post.index', compact('posts'));
     }
 
@@ -27,7 +29,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->user_id = 1;
         $post->save();
-        return redirect('post')->with('status', 'Created post successfully.');
+        return redirect('admin/post')->with('status', 'Created post successfully.');
     }
 
     public function show($id)
@@ -48,7 +50,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->user_id = 1;
         $post->save();
-        return redirect('post')->with('status', 'Updated post successfully.');
+        return redirect('admin/post')->with('status', 'Updated post successfully.');
     }
 
     public function destroy($id)
@@ -57,6 +59,6 @@ class PostController extends Controller
         // $post = Post::find($id);
         $post = Post::findOrFail($id); // with error checking
         $post->delete();
-        return redirect('post')->with('status', 'Deleted post successfully.');
+        return redirect('admin/post')->with('status', 'Deleted post successfully.');
     }
 }
