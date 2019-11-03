@@ -35,7 +35,7 @@ git push -u origin master
 - composer install
 - php artisan key:generate
 ```
-php artisan migate
+php artisan migrate
 php artisan db:seed
 ```
 or 
