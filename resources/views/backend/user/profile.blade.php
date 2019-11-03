@@ -15,7 +15,7 @@
                 <p>Email: {{ auth()->user()->email }}</p>
             </div>
             <div class="card-footer text-right">
-                <a href="#" class="btn btn-success btn-sm">
+                <a href="{{ url('admin/profile/edit') }}" class="btn btn-success btn-sm">
                     <i class="fas fa-edit"></i>
                     Edit
                 </a>

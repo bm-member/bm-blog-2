@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
             $post = new App\Post();
             $post->title = str_random(10);
             $post->content = str_random(200);
-            $post->user_id = 1;
+            $post->user_id = rand(1, 3);
             $post->save();
         }
     }

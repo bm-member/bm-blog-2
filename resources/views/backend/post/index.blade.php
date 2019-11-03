@@ -36,9 +36,13 @@
                     {{ $post->title }}
                 </div>
                 <div class="card-body">
-                    {{ $post->content}}
+                    {{ substr($post->content, 0, 100) }}
                 </div>
                 <div class="card-footer text-right">
+                    <a href="{{ url("admin/post/$post->id") }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View
+                    </a>
                     <a href="{{ url("admin/post/$post->id/edit") }}" class="btn btn-success btn-sm">
                         <i class="fas fa-edit"></i>
                         Edit
@@ -56,7 +60,7 @@
     <div class="row justify-content-center">
         {{ $posts->links() }}
     </div>
-    
+
 </div>
 
 @endsection

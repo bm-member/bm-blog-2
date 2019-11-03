@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+// use App\User;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -22,19 +24,44 @@ class PostController extends Controller
         return view('backend.post.create');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $post = new Post();
+        dd($request->all());
+
+        /* $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ], [
+            'title.required' => 'ခေါင်းစဉ်လိုအပ်သည်။',
+            'content.required' => 'အကြောင်းအရာလိုအပ်သည်။'
+        ]); */
+
+        
+
+        /* Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'user_id' => auth()->user()->id
+        ]); */
+        
+        /* $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->user_id = 1;
-        $post->save();
+        $post->user_id = auth()->user()->id;
+        $post->save(); */
+
+        Post::create($request->all());
+        
         return redirect('admin/post')->with('status', 'Created post successfully.');
     }
 
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        // $user = User::find($post->user_id);
+
+        return view('backend.post.show', compact('post'));
     }
 
     public function edit($id)
@@ -43,13 +70,24 @@ class PostController extends Controller
         return view('backend.post.edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        $post = Post::findOrFail($id);
+        /* $post = Post::findOrFail($id);
         $post->title = $request->title;
         $post->content = $request->content;
         $post->user_id = 1;
-        $post->save();
+        $post->save(); */
+
+        /* $post = Post::findOrFail($id);
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'user_id' => auth()->user()->id
+        ]); */
+
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+
         return redirect('admin/post')->with('status', 'Updated post successfully.');
     }
 
@@ -59,6 +97,8 @@ class PostController extends Controller
         // $post = Post::find($id);
         $post = Post::findOrFail($id); // with error checking
         $post->delete();
-        return redirect('admin/post')->with('status', 'Deleted post successfully.');
+        // return redirect('admin/post')->with('status', 'Deleted post successfully.');
+        // return redirect()->back()->with('status', 'Deleted post successfully.');
+        return back()->with('status', 'Deleted post successfully.');
     }
 }

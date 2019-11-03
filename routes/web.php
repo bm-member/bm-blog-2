@@ -34,12 +34,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authware', 'namespace' => 'B
     Route::get('post/{id}/edit', 'PostController@edit');
     Route::post('post/{id}/edit', 'PostController@update');
     Route::get('post/{id}/delete', 'PostController@destroy'); 
+    Route::get('post/{id}', 'PostController@show');
 });
 
 // User
 Route::group(['prefix' => 'admin', 'middleware' => 'authware', 'namespace' => 'Backend'], function() {
     Route::get('/profile', 'UserController@profile');
+    Route::get('/profile/edit', 'UserController@edit');
+    Route::post('/profile/edit', 'UserController@update');
 });
+
 
 
 /* Route::get('admin/post', 'Backend\PostController@index');
@@ -72,6 +76,5 @@ Route::get('/test', function() {
     }
     
 }); */
-
 
 

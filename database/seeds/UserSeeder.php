@@ -11,10 +11,29 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new App\User();
-        $user->name = 'Mg Mg';
-        $user->email = 'mgmg@bm.com';
-        $user->password = bcrypt('12345678');
-        $user->save();
+        $users = [
+            [
+                'name' => 'Mg Mg',
+                'email' => 'mgmg@bm.com'
+            ],
+            [
+                'name' => 'Ag Ag',
+                'email' => 'agag@bm.com'
+            ],
+            [
+                'name' => 'Aye Aye',
+                'email' => 'ayeaye@bm.com'
+            ],
+        ];
+
+        foreach($users as $val) {
+            $user = new App\User();
+            $user->name = $val['name'];
+            $user->email = $val['email'];
+            $user->password = bcrypt('12345678');
+            $user->save();
+        }
+
+        
     }
 }

@@ -7,6 +7,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            @include('alerts')
+
             <h3>Edit Post</h3>
             <form action="{{ url("admin/post/$post->id/edit") }}" method="post">
                 @csrf
