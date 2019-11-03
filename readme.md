@@ -47,3 +47,13 @@ php artisan migrate:fresh --seed
 ```
 - php artisan serve
 - done.
+
+### Todo
+- image upload
+- login with username
+- role and permission
+- localization
+- email verify
+- api
+- api auth
+- api resouce
