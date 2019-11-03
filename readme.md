@@ -50,6 +50,7 @@ php artisan migrate:fresh --seed
 
 ### Todo
 - image upload
+- factory
 - login with username
 - role and permission
 - localization
