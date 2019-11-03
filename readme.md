@@ -57,3 +57,4 @@ php artisan migrate:fresh --seed
 - api
 - api auth
 - api resouce
+- sql query join
