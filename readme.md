@@ -34,6 +34,13 @@ git push -u origin master
 - config db setting 
 - composer install
 - php artisan key:generate
-- php artisan migrate
+```
+php artisan migate
+php artisan db:seed
+```
+or 
+```
+php artisan migrate:fresh --seed
+```
 - php artisan serve
 - done.
