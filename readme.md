@@ -49,6 +49,7 @@ php artisan migrate:fresh --seed
 - done.
 
 ### Todo
+- search
 - image upload
 - factory
 - login with username
