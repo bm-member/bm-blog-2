@@ -8,6 +8,7 @@
 - php artisan serve
 - php artisan serve --port=3000
 - php artisan make:middleware AuthWare
+- php artisan make:seeder PostSeeder
 - php artisan db:seed --class=PostSeeder
 - php artisan db:seed
 - php artisan migrate:reset 
@@ -40,9 +41,22 @@ git push -u origin master
 php artisan migrate
 php artisan db:seed
 ```
-or 
+or (already cloned user)
 ```
 php artisan migrate:fresh --seed
 ```
 - php artisan serve
 - done.
+
+### Todo
+- search
+- image upload
+- factory
+- login with username
+- role and permission
+- localization
+- email verify
+- api
+- api auth
+- api resouce
+- sql query join
