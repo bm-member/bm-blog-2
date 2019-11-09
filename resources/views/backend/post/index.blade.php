@@ -8,16 +8,9 @@
 
     <div class="row my-3">
         <div class="col-md-12">
-            @if(session('status'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('status') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
+            @include('alerts')
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4">
             <h3>All Posts</h3>
         </div>
         <div class="col-md-4 text-right">
@@ -26,7 +19,24 @@
                 Create
             </a>
         </div>
+
+        <div class="col-md-4">
+            <form action="{{ url('admin/post') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" 
+                    name="search" placeholder="Search by post's title">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" >
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
+
+    @can('isAdminOrAuthor')
 
     <div class="row">
         @foreach($posts as $post)
@@ -60,6 +70,8 @@
     <div class="row justify-content-center">
         {{ $posts->links() }}
     </div>
+
+    @endcan
 
 </div>
 

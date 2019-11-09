@@ -11,8 +11,13 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                {{-- <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                alt="User Image"> --}}
+
+                @if(auth()->user()->image)
+                <img src="{{ asset( 'upload/profile/' . auth()->user()->image) }}" class="img-circle elevation-2"
                     alt="User Image">
+                @endif
             </div>
             <div class="info">
                 <a href="#" class="d-block">
@@ -23,8 +28,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
@@ -36,12 +40,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @can('isAdminOrAuthor')
                         <li class="nav-item">
                             <a href="{{ url('admin/post') }}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Post</p>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
                 <li class="nav-item">

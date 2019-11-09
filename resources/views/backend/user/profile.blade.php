@@ -6,6 +6,9 @@
 
 <div class="container">
     <div class="col-md-6">
+
+        @include('alerts')
+
         <div class="card">
             <div class="card-header">
                 <h3>Profile</h3>
@@ -13,6 +16,7 @@
             <div class="card-body">
                 <p>Name: {{ auth()->user()->name}}</p>
                 <p>Email: {{ auth()->user()->email }}</p>
+                <p>Role: {{ ucfirst(auth()->user()->role) }}</p>
             </div>
             <div class="card-footer text-right">
                 <a href="{{ url('admin/profile/edit') }}" class="btn btn-success btn-sm">

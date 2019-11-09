@@ -7,15 +7,42 @@ use App\Http\Controllers\Controller;
 use App\Post;
 // use App\User;
 use App\Http\Requests\PostRequest;
+use Gate;
 
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        // $posts = Post::all();
-        // $posts = Post::orderBy('id', 'desc')->get();
-        $posts = Post::orderBy('id', 'desc')->paginate(6);
+
+        if (Gate::allows('isAdmin')) {
+            if ($request->search) {
+                $posts = Post::where('title', 'like' , '%' . $request->search . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(6);
+            } else {
+                // $posts = Post::all();
+                // $posts = Post::orderBy('id', 'desc')->get();
+                $posts = Post::orderBy('id', 'desc')->paginate(6);
+            }
+        }
+
+        if (Gate::allows('isAuthor')) {
+            if ($request->search) {
+                $posts = Post::where('title', 'like' , '%' . $request->search . '%')
+                ->where('user_id', auth()->id())
+                ->orderBy('id', 'desc')
+                ->paginate(6);
+            } else {
+                // $posts = Post::all();
+                // $posts = Post::orderBy('id', 'desc')->get();
+                $posts = Post::orderBy('id', 'desc')
+                ->where('user_id', auth()->id())
+                ->paginate(6);
+            }
+
+        }
+        
         return view('backend.post.index', compact('posts'));
     }
 
@@ -36,14 +63,14 @@ class PostController extends Controller
             'content.required' => 'အကြောင်းအရာလိုအပ်သည်။'
         ]); */
 
-        
+
 
         /* Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => auth()->user()->id
         ]); */
-        
+
         /* $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
@@ -51,7 +78,7 @@ class PostController extends Controller
         $post->save(); */
 
         Post::create($request->all());
-        
+
         return redirect('admin/post')->with('status', 'Created post successfully.');
     }
 

@@ -27,7 +27,7 @@ Route::get('/', function() {
 });
 
 // Post routes
-Route::group(['prefix' => 'admin', 'middleware' => 'authware', 'namespace' => 'Backend'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['authware', 'can:isAdminOrAuthor'], 'namespace' => 'Backend'], function() {
     Route::get('post', 'PostController@index');
     Route::get('post/create', 'PostController@create');
     Route::post('post', 'PostController@store');
@@ -65,16 +65,18 @@ Route::get('/test', function() {
 }); */
 
 
-/* Route::get('/test', function() {
+Route::get('/test', function() {
 
-    for($i=1; $i<=50; $i++) {
-        $post = new App\Post();
-        $post->title = str_random(10);
-        $post->content = str_random(200);
-        $post->user_id = 1;
-        $post->save();
-    }
+    // unlink(public_path('upload/profile/1573274302.png'));
+
+    // echo time();
+
+  /*  echo asset('');
+
+   echo '<br>';
+
+   echo public_path(); */
     
-}); */
+});
 
 

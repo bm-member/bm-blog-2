@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/post';
+    protected $redirectTo = '/admin/profile';
 
     /**
      * Create a new controller instance.
@@ -46,4 +46,9 @@ class LoginController extends Controller
 
         return $this->loggedOut($request) ?: redirect('/login');
     }
+
+    /* public function username()
+    {
+        return 'name';
+    } */
 }

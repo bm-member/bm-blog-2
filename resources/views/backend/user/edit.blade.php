@@ -11,7 +11,7 @@
                 <h3>Profile</h3>
             </div>
             <div class="card-body">
-                <form action="{{ url('admin/profile/edit') }}" method="post">
+                <form action="{{ url('admin/profile/edit') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Name</label>
@@ -19,7 +19,11 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" value="{{ auth()->user()->email }}" class="form-control"> 
+                        <input type="email" name="email" value="{{ auth()->user()->email }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Profile Image</label>
+                        <input type="file" class="form-control-file" name="image">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
