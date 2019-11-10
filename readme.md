@@ -17,10 +17,16 @@
 - php artisan migrate:fresh --seed
 - php artisan make:request PostRequest
 - php artisan route:list
+- php artisan make:resource PostResource
+- php artisan tinker (laravel command line tool)
 
 ```
 php artisan make:controller Backend/PostController -r
 ```
+
+### Other Package
+
+- composer require tymon/jwt-auth "1.*"
 
 ### Git 
 
