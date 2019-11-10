@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Resources\PostResource;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -10,7 +11,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('post', function() {
     $posts = Post::orderBy('id', 'desc')->paginate(6);
-    return response()->json(compact('posts'));
+    return response()->json([
+        'posts' => PostResource::collection($posts)
+    ]);
 });
 
 Route::get('post/{id}', function($id) {
@@ -19,7 +22,7 @@ Route::get('post/{id}', function($id) {
 
     if($post) {
         return response()->json([
-           'post' => $post
+           'post' => new PostResource($post)
         ]);
     }
 
