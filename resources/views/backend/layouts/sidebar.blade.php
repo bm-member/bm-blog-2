@@ -11,12 +11,15 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                {{-- <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                alt="User Image"> --}}
-
                 @if(auth()->user()->image)
-                <img src="{{ asset( 'upload/profile/' . auth()->user()->image) }}" class="img-circle elevation-2"
+
+                <img src="{{ asset( auth()->user()->image) }}" class="img-circle elevation-2"
                     alt="User Image">
+                @else
+
+                <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                    alt="User Image">
+
                 @endif
             </div>
             <div class="info">
@@ -43,7 +46,7 @@
                         @can('isAdminOrAuthor')
                         <li class="nav-item">
                             <a href="{{ url('admin/post') }}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>
                                 <p>Post</p>
                             </a>
                         </li>

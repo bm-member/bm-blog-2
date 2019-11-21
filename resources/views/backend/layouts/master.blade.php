@@ -10,6 +10,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('imgs/logo.png') }}">
+
     <title>@yield('title')</title>
 
     <!-- Font Awesome Icons -->

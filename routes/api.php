@@ -15,6 +15,12 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::post('profile', function() {
+        if(auth('api')->check()) {
+            return Auth::guard('api')->user();
+        }
+        return 'not found.';
+    });
 
 });
 
@@ -91,3 +97,4 @@ Route::delete('post/{id}', function($id) {
         'msg' => 'A post does not exists.'
     ], 404);
 })->middleware('auth:api');
+

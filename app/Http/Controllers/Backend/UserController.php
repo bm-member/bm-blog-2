@@ -28,19 +28,26 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
+
+            // check if user has old image, delete it first.
+            $oldImage = public_path() . '/' . $user->image;
+            if ( is_file($oldImage) && file_exists($oldImage) ) {
+                unlink($oldImage);
+            }
+
             $img = $request->file('image');
-            $folder = public_path('upload/profile/');
-            $imgName = time() . '.' . $img->getClientOriginalExtension();
-            $img->move($folder, $imgName);
+            $folder = 'upload/profile/';
+            $imgName = $folder . time() . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path($folder), $imgName);
             $user->image = $imgName;
         }
 
-        if($request->password !== null) {
+        if ($request->password !== null) {
             $user->password = bcrypt($request->password);
         }
         $user->save();
-     
+
         return redirect('admin/profile')->with('status', 'User was updated successfully.');
     }
 }

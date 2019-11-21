@@ -53,7 +53,7 @@ class PostController extends Controller
 
     public function store(PostRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         /* $request->validate([
             'title' => 'required',
